@@ -11,7 +11,7 @@ http:
     - "gs-loc-cn.apple.com"
   script:
     - match: ^https?:\/\/gs-loc(-cn)?\.apple\.com\/clls\/wloc
-      name: Apple WLOC
+      name: WLOC.Location
       type: response
       require-body: true
       binary-mode: true
@@ -19,15 +19,15 @@ http:
       timeout: 30
       argument: longitude=113.94114&latitude=22.544577&accuracy=25&logLevel=info
     - match: ^https?:\/\/gs-loc(-cn)?\.apple\.com\/wloc-settings\/save
-      name: WLOC Settings
+      name: WLOC.Settings
       type: request
       require-body: false
       timeout: 10
 
 script-providers:
-  Apple WLOC:
+  WLOC.Location:
     url: https://raw.githubusercontent.com/Yu9191/wloc/refs/heads/main/dist/wloc.js
     interval: 86400
-  WLOC Settings:
+  WLOC.Settings:
     url: https://raw.githubusercontent.com/Yu9191/wloc/refs/heads/main/dist/wloc-settings.js
     interval: 86400
