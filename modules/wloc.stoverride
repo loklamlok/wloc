@@ -14,14 +14,20 @@ http:
       name: Apple WLOC
       type: response
       require-body: true
-      binary-body-mode: true
+      binary-mode: true
       max-size: 0
       timeout: 30
       argument: longitude=113.94114&latitude=22.544577&accuracy=25&logLevel=info
-      script-path: https://raw.githubusercontent.com/Yu9191/wloc/refs/heads/main/dist/wloc.js
     - match: ^https?:\/\/gs-loc(-cn)?\.apple\.com\/wloc-settings\/save
       name: WLOC Settings
       type: request
       require-body: false
       timeout: 10
-      script-path: https://raw.githubusercontent.com/Yu9191/wloc/refs/heads/main/dist/wloc-settings.js
+
+script-providers:
+  Apple WLOC:
+    url: https://raw.githubusercontent.com/Yu9191/wloc/refs/heads/main/dist/wloc.js
+    interval: 86400
+  WLOC Settings:
+    url: https://raw.githubusercontent.com/Yu9191/wloc/refs/heads/main/dist/wloc-settings.js
+    interval: 86400
